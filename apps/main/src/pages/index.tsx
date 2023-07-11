@@ -1,15 +1,26 @@
-import { Flex } from "@chakra-ui/react";
-import { Center } from "@chakra-ui/react";
+import { Center, Box, SimpleGrid } from "@chakra-ui/react";
 import {Navbar} from "@finances/ui";
-import {Footer} from "@finances/ui";
+import { gql, useQuery} from "@apollo/client";
+
+
+const GET_USER = gql`
+    query {
+     users {
+         id,
+         name
+     }
+    }
+`;
 
 export default function Home() {
+    const { data } = useQuery(GET_USER)
+    console.log(data)
+
   return (
-    <>
+    <SimpleGrid minW={'100%'} grid-auto-columns={true}>
       <Navbar/>
-        <Flex
+        <Box
             bg="primary.100"
-            maxW="100%"
             minH="100vh"
             justifyContent={"center"}
             alignItems={"center"}
@@ -25,8 +36,7 @@ export default function Home() {
             >
                 Welcome to finances!!
             </Center>
-        </Flex>
-        <Footer/>
-    </>
+        </Box>
+    </SimpleGrid>
   )
 }

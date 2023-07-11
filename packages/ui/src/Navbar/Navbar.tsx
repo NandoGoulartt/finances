@@ -16,18 +16,13 @@ export default function Navbar() {
     return (
         <>
             <Box
-                maxW={"100%"}
-                minH={'100px'}
                 bg="primary.600"
                 px={4}
                 boxShadow='dark-lg'
-                position={"absolute"}
-                zIndex={999}
-                minW={"100%"}
             >
-                <Flex h={24} alignItems={'center'} justifyContent={'space-between'}>
+                <Box h={24} alignItems={'center'} justifyContent={'space-between'}>
                     <HStack spacing={8} alignItems={'center'}>
-                        <Box w="32" alignItems="center" mx="8">
+                        <Box w="42" alignItems="center" mx="8">
                             <Link href={'/'}>
                                 <Logo widht={'1000px'} />
                             </Link>
@@ -37,11 +32,6 @@ export default function Navbar() {
 
                     <Flex alignItems={'center'}>
                         <Stack direction={'row'} spacing={7}>
-                            <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-                                <Button bgColor={"primary.200"}>
-                                    Gerenciar
-                                </Button>
-                            </HStack>
                             <Menu>
                                 <MenuButton
                                     as={Button}
@@ -71,7 +61,7 @@ export default function Navbar() {
                             </Menu>
                         </Stack>
                     </Flex>
-                </Flex>
+                </Box>
             </Box>
         </>
     )
