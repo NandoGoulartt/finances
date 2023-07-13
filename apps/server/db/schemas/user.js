@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 
-  login: {
-    type: Number,
+  email: {
+    type: String,
     required: true,
   },
 
@@ -16,12 +16,28 @@ const userSchema = new mongoose.Schema({
     require: true,
   },
 
-  createdAt: {
+  cpf: {
+    type: String,
+  },
+
+  cnpj: {
+    type: String,
+  },
+
+  valorHora: {
+    type: Number,
+  },
+
+  numeroTelefone: {
+    type: Number,
+  },
+
+  dataCreated: {
     type: Date,
     default: Date.now,
   },
 
-  createdAt: {
+  dataNascimento: {
     type: Date,
     default: Date.now,
   },
