@@ -38,8 +38,7 @@ const userSchema = new mongoose.Schema({
   },
 
   dataNascimento: {
-    type: Date,
-    default: Date.now,
+    type: Date
   },
 });
 
