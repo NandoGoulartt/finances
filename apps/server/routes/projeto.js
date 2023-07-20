@@ -2,6 +2,10 @@ const Projeto = require("../db/schemas/projeto");
 const express = require("express");
 const router = express.Router();
 
+const auth = require("../authController");
+
+router.use(auth);
+
 router.get("/", async (req, res) => {
   res.send(await Projeto.find());
 });
@@ -27,7 +31,8 @@ router.put("/:id", (req, res) => {
     { new: true },
     (err, Projeto) => {
       if (err) return res.status(500).send(err);
-      if (!Projeto) return res.status(404).send("Contas Receber não encontrado");
+      if (!Projeto)
+        return res.status(404).send("Contas Receber não encontrado");
       res.send(Projeto);
     }
   );

@@ -1,6 +1,9 @@
 const ContasReceber = require("../db/schemas/contasReceber");
 const express = require("express");
 const router = express.Router();
+const auth = require("../authController");
+
+router.use(auth);
 
 router.get("/", async (req, res) => {
   res.send(await ContasReceber.find());
@@ -9,7 +12,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   ContasReceber.findById(req.params.id, (err, ContasReceber) => {
     if (err) return res.status(500).send(err);
-    if (!ContasReceber) return res.status(404).send("Contas Receber não encontrado");
+    if (!ContasReceber)
+      return res.status(404).send("Contas Receber não encontrado");
     res.send(ContasReceber);
   });
 });
@@ -27,7 +31,8 @@ router.put("/:id", (req, res) => {
     { new: true },
     (err, ContasReceber) => {
       if (err) return res.status(500).send(err);
-      if (!ContasReceber) return res.status(404).send("Contas Receber não encontrado");
+      if (!ContasReceber)
+        return res.status(404).send("Contas Receber não encontrado");
       res.send(ContasReceber);
     }
   );
@@ -36,7 +41,8 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   ContasReceber.findByIdAndDelete(req.params.id, (err, Moviment) => {
     if (err) return res.status(500).send(err);
-    if (!ContasReceber) return res.status(404).send("Contas Receber não encontrado");
+    if (!ContasReceber)
+      return res.status(404).send("Contas Receber não encontrado");
     res.send(ContasReceber);
   });
 });

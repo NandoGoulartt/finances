@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const contasReceberRoutes = require("./routes/contasReceber");
 const contasPagarRoutes = require("./routes/contasPagar");
 const projetoRoutes = require("./routes/projeto");
@@ -12,6 +13,7 @@ const port = 3000;
 connectDB();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/contaReceber", contasReceberRoutes);
 app.use("/contaPagar", contasPagarRoutes);
